@@ -1,0 +1,11 @@
+{
+  "name": "audionest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "json-server": "json-server --watch db.json"
+  },
+  "author": "nazeef",
+  "license": "MIT"
+}

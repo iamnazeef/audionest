@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/CSS/styles.css" />
+    <link rel="stylesheet" href="/src/CSS/miniPlayerStyles.css" />
+    <link rel="stylesheet" href="/src/CSS/mainMusicPlayer.css" />
+    <title id="title">AudioNest - Web Player: Music for everyone</title>
+  </head>
+  <body class="body">
+    <!-- mini music player -->
+    <div class="mini-music-player" id="mini-music-player">
+      <div class="music-menus">
+        <div class="cover-art">
+          <img src="" alt="" id="mini-player-cover-art" loading="lazy" />
+        </div>
+        <div class="song-name" id="mini-player-song-name-div">
+          <p id="mini-player-song-name"></p>
+        </div>
+        <div class="fav">
+          <img src="/assets/heart.png" id="mini-player-fav" alt="favourite" />
+        </div>
+        <div class="play-pause" id="play-pause">
+          <img src="assets/play.png" id="play-pause-img" alt="play-or-pause" />
+        </div>
+      </div>
+    </div>
+    <!-- main music player  -->
+    <div class="main-music-player" id="main-music-player"></div>
+    <!-- sidenav  -->
+    <nav class="sidenav" id="sidenav">
+      <div class="close">
+        <div id="close-icon">
+          <img src="/assets/close.png" width="18px" />
+        </div>
+      </div>
+      <div class="options">
+        <ul class="auth">
+          <li><a href="#">Log in</a></li>
+          <li><a href="#">Sign up</a></li>
+        </ul>
+        <div class="divider">—</div>
+        <ul class="others">
+          <li><a href="#">Premium</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Download</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="container">
+      <!-- header  -->
+      <header>
+        <nav class="nav">
+          <div class="logo">
+            <h1>AudioNest</h1>
+          </div>
+          <div class="menu">
+            <!-- search  -->
+            <div class="search" id="search">
+              <img src="assets/search.png" width="25px" />
+            </div>
+            <!-- ham menu -->
+            <div class="ham-menu" id="ham-menu">
+              <img src="assets/menu.png" width="25px" />
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <!-- main content -->
+      <main class="main-content">
+        <!-- World's Best  -->
+        <section class="worlds-best music-and-category-name">
+          <h3 class="category-name">World's Best</h3>
+          <div class="music" id="wordls-best"></div>
+        </section>
+        <!--Recommended-->
+        <section class="Recommended music-and-category-name">
+          <h3 class="category-name">Recommended</h3>
+          <div class="music" id="recommended-music"></div>
+        </section>
+        <!-- Top Tracks  -->
+        <section class="top-tracks music-and-category-name">
+          <h3 class="category-name">Top Tracks</h3>
+          <div class="music" id="top-tracks"></div>
+        </section>
+
+        <!-- Popular Releases  -->
+        <section class="popular-releases music-and-category-name">
+          <h3 class="category-name">Popular Releases</h3>
+          <div class="music" id="popular-releases"></div>
+        </section>
+
+        <!-- Top Malayalam -->
+        <section class="top-malayalam music-and-category-name">
+          <h3 class="category-name">Top Malayalam</h3>
+          <div class="music" id="top-malayalam"></div>
+        </section>
+      </main>
+    </div>
+    <script src="/src/JS/fetchSongAndPlay.js" type="module"></script>
+    <script src="/src/JS/app.js" type="module"></script>
+    <script src="/src/JS/mainMusicPlayer.js" type="module"></script>
+  </body>
+</html>

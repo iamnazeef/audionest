@@ -1,0 +1,228 @@
+.main-music-player {
+  /* border: 2px solid blue; */
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgb(143, 17, 17), rgb(70, 7, 7));
+  z-index: 30;
+  overflow: hidden;
+  width: 101%;
+  height: 101vh;
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+}
+
+.main-music-player.active {
+  transform: translateX(0%);
+}
+
+body.active {
+  overflow: hidden;
+}
+
+.player-menu {
+  /* border: 2px solid white; */
+  color: white;
+  width: 100vw;
+  height: 4rem;
+  display: flex;
+  padding: 1rem 1.8rem 0;
+}
+
+.player-menu nav {
+  /* border: 2px solid green; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  font-family: Poppins;
+  font-size: small;
+  font-weight: 500;
+}
+
+.song-title {
+  /* border: 2px solid yellow; */
+  width: 100%;
+  max-width: 237px;
+  max-height: 21px;
+  text-align: center;
+  margin: 0 auto;
+  overflow: scroll;
+}
+
+.song-details {
+  /* border: 2px solid yellow; */
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.current-song-cover-art {
+  /* border: 2px solid greenyellow; */
+  margin: 0 auto;
+  width: 80%;
+  max-width: 240px;
+  text-align: center;
+}
+
+.img-cover-art {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  max-width: 100%;
+}
+
+.song-controls-and-general-details {
+  /* border: 2px solid white; */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 0.2rem;
+  margin-bottom: 2rem;
+}
+
+.general-details {
+  /* border: 2px solid green; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-size: larger;
+  padding: 0 1em;
+  font-weight: bold;
+  letter-spacing: -1.1px;
+  margin-top: -5em;
+}
+
+.current-song-name {
+  /* border: 2px solid yellow; */
+  font-size: larger;
+  font-weight: bold;
+  /* max-width: 293px; */
+  max-height: 31px;
+  overflow: scroll;
+}
+
+.current-song-artists {
+  font-size: medium;
+  font-weight: 500;
+  color: gainsboro;
+}
+
+/* duration and progress bar */
+.duration-and-progress-bar {
+  /* border: 2px solid red; */
+  margin: 1.8rem auto 2rem;
+  color: white;
+}
+
+/* duration */
+.duration {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.song-duration {
+  font-family: "Poppins";
+  font-size: 0.9rem;
+}
+
+/* progress-bar  */
+.progress-bar {
+  background-color: whitesmoke;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* current progress bar  */
+.current-progress-bar {
+  border: 2px solid rgb(201, 16, 16);
+  background-color: rgb(201, 16, 16);
+  padding: 0.5px;
+  border-radius: 50px;
+  width: 0%;
+  transition: width 0.5s linear;
+}
+
+/* audio controls  */
+
+.audio-controls {
+  /* border: 2px solid yellow; */
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.audio-controls img {
+  /* border: 2px solid yellow; */
+  width: 2rem;
+}
+
+/* repeat icon*/
+.repeat img {
+  width: 1.5rem;
+}
+
+/* shuffle icon */
+.shuffle img {
+  width: 1.75rem;
+}
+
+.audio-controls section {
+  vertical-align: middle;
+  text-align: center;
+}
+
+@media screen and (min-width: 390px) {
+  .song-details {
+    /* border: 2px solid yellow; */
+    margin-top: 8rem;
+  }
+
+  .current-song-cover-art {
+    /* border: 2px solid greenyellow; */
+    max-width: 300px;
+  }
+}
+
+@media screen and (min-width: 412px) {
+  .song-details {
+    /* border: 2px solid yellow; */
+    margin-top: 10rem;
+  }
+
+  .current-song-cover-art {
+    /* border: 2px solid greenyellow; */
+    max-width: 300px;
+  }
+}
+
+@media screen and (min-width: 540px) {
+  .song-details {
+    /* border: 2px solid yellow; */
+    margin-top: 5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .song-details {
+    /* border: 2px solid yellow; */
+    margin-top: 10rem;
+  }
+
+  .current-song-cover-art {
+    /* border: 2px solid greenyellow; */
+    max-width: 410px;
+  }
+}
+
+@media screen and (min-width: 912px) {
+  .current-song-cover-art {
+    /* border: 2px solid greenyellow; */
+    text-align: center;
+    max-width: 500px;
+  }
+}
