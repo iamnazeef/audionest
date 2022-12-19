@@ -9,6 +9,10 @@ const popularReleasesMusic = document.getElementById("popular-releases");
 const topMalayalamMusic = document.getElementById("top-malayalam");
 import { fetchSong } from "./fetchSongAndPlay.js";
 
+const serverURL = {
+  link: "https://audionest-web-api.onrender.com",
+};
+
 let id = "";
 let medias = "";
 const mediaQueries = () => {
@@ -75,9 +79,7 @@ const html = [
 
 const getSongs = async (category, HTML) => {
   try {
-    let response = await fetch(
-      `https://audionest-web-api.onrender.com/${category}`
-    );
+    let response = await fetch(`${serverURL.link}/${category}`);
     response = await response.json();
     let songs = "";
     for (let data of response) {
