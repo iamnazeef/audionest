@@ -1,18 +1,20 @@
 //functions to get total song duration
 
 const getMinutesForTotalTime = (duration) => {
-  if (Math.floor(duration / 60) < 10) {
-    return "0" + Math.floor(duration / 60);
+  const minute = Math.floor(duration / 60);
+  if (minute < 10) {
+    return "0" + minute;
   } else {
-    return Math.floor(duration / 60);
+    return minute;
   }
 };
 
 const getSecondsForTotalTime = (duration) => {
-  if (Math.floor(duration % 60) < 10) {
-    return "0" + Math.floor(duration % 60);
+  const seconds = Math.floor(duration % 60);
+  if (seconds < 10) {
+    return "0" + seconds;
   } else {
-    return Math.floor(duration % 60);
+    return seconds;
   }
 };
 

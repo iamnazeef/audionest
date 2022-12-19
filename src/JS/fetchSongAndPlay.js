@@ -1,6 +1,13 @@
 const musicPlayer = document.getElementById("mini-music-player");
 const miniPlayerSongName = document.getElementById("mini-player-song-name");
 const miniPlayerCoverArt = document.getElementById("mini-player-cover-art");
+const miniPlayerArtistName = document.getElementById("mini-player-artist-name");
+const desktopModeSongSkipForward = document.getElementById(
+  "desktop-skip-forward"
+);
+const desktopModeSongSkipBackward = document.getElementById(
+  "desktop-skip-backward"
+);
 const title = document.getElementById("title");
 const playPause = document.getElementById("play-pause");
 const playPauseImg = document.getElementById("play-pause-img");
@@ -9,6 +16,8 @@ import {
   getMinutesForTotalTime,
   getSecondsForTotalTime,
 } from "./totalSongTime.js";
+
+import { changeMusicProgress } from "./changeMusicProgress.js";
 
 const songInfo = {
   songId: 0,
@@ -22,10 +31,11 @@ const songInfo = {
   currentProgressBar: "",
   totalTime: "",
   currentSongDuration: "",
+  progressBar: "",
 };
 
 const serverURL = {
-  link: "http://localhost:3000",
+  link: "https://audionest-web-api.onrender.com",
 };
 
 //object for Audio;
@@ -45,16 +55,24 @@ const fetchSong = (songCategory, songId) => {
       miniPlayerCoverArt.alt = data.song_name;
       const songArtist = data.artists.split(",");
       songInfo.songArtist = songArtist[0];
+      if (window.innerWidth >= 1000) {
+        miniPlayerArtistName.innerText = songArtist[0];
+      }
       audio.src = data.audio;
-      title.innerText = `Playing ${data.song_name} by ${songInfo.songArtist}`;
+      title.innerText = `Playing "${data.song_name}" by ${songInfo.songArtist}`;
 
       //mini player activation
       musicPlayer.classList.add("active");
 
+      //main player song state modifier (Play or Pause Icon)
+      songInfo.songState = "../assets/pause.png";
+
+      //condition to refresh main music player if it is activated
       if (songInfo.songBoolean) {
         songInfo.songBoolean = false;
         loadInfo();
       }
+
       audio.play();
       playPauseImg.src = "../assets/pause.png";
     })
@@ -103,6 +121,12 @@ const skipSongForward = () => {
   }
 };
 
+//desktop mode song skip forward event
+desktopModeSongSkipForward.addEventListener("click", skipSongForward);
+
+//desktop mode song skip backward event
+desktopModeSongSkipBackward.addEventListener("click", skipSongBackward);
+
 //function to load info to main music player
 const loadInfo = () => {
   const mainPlayerSongTitle = document.getElementById("song-title");
@@ -115,7 +139,9 @@ const loadInfo = () => {
   const shuffleSong = document.getElementById("shuffle");
   songInfo.currentSongDuration = document.getElementById("current-duration");
   songInfo.totalTime = document.getElementById("total-time");
+  songInfo.progressBar = document.getElementById("progress-bar");
 
+  //Function to display / set total music time
   const setTotalTime = () => {
     songInfo.totalTime.innerText = `${getMinutesForTotalTime(
       audio.duration
@@ -123,6 +149,13 @@ const loadInfo = () => {
   };
 
   setTimeout(setTotalTime, 200);
+
+  //Event to change music progress
+  if (songInfo.progressBar) {
+    songInfo.progressBar.addEventListener("click", (event) => {
+      changeMusicProgress(event, audio);
+    });
+  }
 
   songInfo.currentProgressBar = document.getElementById("currentProgressBar");
   mainPlayerSongTitle.innerText = songInfo.songName;
@@ -148,9 +181,9 @@ audio.addEventListener("ended", skipSongForward);
 //event listener to play and pause song
 playPause.addEventListener("click", audioPlayer);
 
-//progress bar and current duration of song
+//Event listener for progress bar and current duration of the song
 audio.addEventListener("timeupdate", (event) => {
-  const { currentTime, duration } = event.path[0];
+  const { currentTime, duration } = event.composedPath()[0];
 
   const getMinutesForCurrentTime = (currentTime) => {
     if (Math.floor(currentTime / 60) < 10) {
@@ -174,6 +207,7 @@ audio.addEventListener("timeupdate", (event) => {
       currentTime
     )} : ${getSecondsForCurrentTime(currentTime)}`;
   }
+
   //progress bar
   let currentDuration = (currentTime / duration) * 100;
   if (songInfo.currentProgressBar) {

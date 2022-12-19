@@ -2,24 +2,22 @@ const hamMenuIcon = document.getElementById("ham-menu");
 const sidenav = document.getElementById("sidenav");
 const body = document.querySelector("body");
 const close = document.getElementById("close-icon");
-const music = document.getElementById("wordls-best");
+const music = document.getElementById("worlds-best");
 const recommendedMusic = document.getElementById("recommended-music");
 const topTrackMusic = document.getElementById("top-tracks");
 const popularReleasesMusic = document.getElementById("popular-releases");
 const topMalayalamMusic = document.getElementById("top-malayalam");
 import { fetchSong } from "./fetchSongAndPlay.js";
-let id = "";
 
+let id = "";
 let medias = "";
 const mediaQueries = () => {
   medias = document.getElementsByClassName("media");
   Array.from(medias).forEach((media) => {
     media.addEventListener("click", (e) => {
-      if (e.target.id && id !== e.target.id) {
-        id = e.target.id;
-        const category = e.target.dataset.category;
-        fetchSong(category, id);
-      }
+      id = e.target.id;
+      const category = e.target.dataset.category;
+      fetchSong(category, id);
     });
   });
 };
@@ -39,21 +37,21 @@ if (window.location.pathname === "/index.html") {
 }
 
 // General Music Template
-const template = (data, i, category, songName) => {
+const template = (coverArt, id, category, songName) => {
   return `
-      <div class="media">
+      <div class="media" title="${songName}">
         <div class="artwork">
           <img
-            src="${data.cover_art}"
+            src="${coverArt}"
             width="100%"
-            id="${i}"
+            id="${id}"
             loading="lazy"
             data-category=${category}
             alt=${songName}
           />
         </div>
         <div>
-          <p class="media-name">${data.song_name}</p>
+          <p class="media-name">${songName}</p>
         </div>
       </div>
   `;
@@ -77,11 +75,13 @@ const html = [
 
 const getSongs = async (category, HTML) => {
   try {
-    let response = await fetch(`http://localhost:3000/${category}`);
+    let response = await fetch(
+      `https://audionest-web-api.onrender.com/${category}`
+    );
     response = await response.json();
     let songs = "";
     for (let data of response) {
-      songs += template(data, data.id, `${category}`, data.song_name);
+      songs += template(data.cover_art, data.id, category, data.song_name);
     }
     HTML.innerHTML = songs;
   } catch (e) {

@@ -16,10 +16,12 @@ const setBackBtn = () => {
 };
 
 const openMainMusicPlayer = () => {
-  mainMusicPlayer.classList.add("active");
-  body.classList.add("active");
-  setBackBtn();
-  loadInfo();
+  if (window.innerWidth < 1000) {
+    mainMusicPlayer.classList.add("active");
+    body.classList.add("active");
+    setBackBtn();
+    loadInfo();
+  }
 };
 
 miniPlayerSongCoverImage.addEventListener("click", openMainMusicPlayer);
@@ -37,7 +39,7 @@ mainMusicPlayer.innerHTML = `
             Kesariya (from "Brahmastra")
           </section>
           <section class="kebab-menu">
-            <img src="../assets/meatball.png" alt="menu" width="20px" />
+            <img src="../assets/meatball.png" id="kebab-menu" alt="menu" width="20px" />
           </section>
         </nav>
     </section>
@@ -45,7 +47,7 @@ mainMusicPlayer.innerHTML = `
     <section class="song-details">
         <section class="current-song-cover-art">
             <img
-              src="https://e.snmc.io/i/600/s/0d140adfa8423b657b6d89257e4d63a8/10107265/pritam-kesariya-Cover-Art.jpg"
+              src=""
               alt=""
               class="img-cover-art"
               id="current-cover-art"
@@ -56,8 +58,8 @@ mainMusicPlayer.innerHTML = `
     <section class="song-controls-and-general-details">
       <section class="general-details">
           <section class="song-and-artists">
-              <p class="current-song-name" id="current-song-name">Kesariya (From "Brahmastra")</p> 
-              <p class="current-song-artists" id="current-song-artists">Prithm</p>
+              <p class="current-song-name" id="current-song-name"></p> 
+              <p class="current-song-artists" id="current-song-artists"></p>
           </section>
           <section class="like">
               <img src="../assets/heart.png" id="main-player-fav-btn" alt="favorite" width="25px" />
@@ -68,7 +70,7 @@ mainMusicPlayer.innerHTML = `
           <div class="current-time song-duration" id="current-duration">00:00</div>
           <div class="total-time song-duration" id="total-time">00:00</div>
         </section>
-        <section class="progress-bar">
+        <section class="progress-bar" id="progress-bar">
           <div class="current-progress-bar" id="currentProgressBar"></div>
         </section>
       </section>
