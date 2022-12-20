@@ -91,8 +91,11 @@ const getSongs = async (category, HTML) => {
   }
 };
 
-if (window.location.pathname === "/index.html") {
+//function to display songs on window load
+const loadSongs = () => {
   for (let j = 0; j < categories.length; j++) {
     getSongs(categories[j], html[j]);
   }
-}
+};
+
+window.onload = loadSongs();
