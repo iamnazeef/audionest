@@ -35,10 +35,8 @@ const toggleSideNav = () => {
 };
 
 //side nav
-if (window.location.pathname === "/index.html") {
-  hamMenuIcon.addEventListener("click", toggleSideNav);
-  close.addEventListener("click", toggleSideNav);
-}
+hamMenuIcon.addEventListener("click", toggleSideNav);
+close.addEventListener("click", toggleSideNav);
 
 // General Music Template
 const template = (coverArt, id, category, songName) => {
