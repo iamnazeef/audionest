@@ -1,5 +1,5 @@
 # AudioNest
-AudioNest is a web-based music streaming service. It is entirely developed with Vanilla JS / CSS / HTML and employs JSON Server as a database and Firestore storage as a CDN for music streaming.
+AudioNest is a web-based music streaming service. It is entirely developed with Vanilla JS / CSS / HTML and employs JSON Server as a database and Firebase storage as a CDN for music streaming.
 
 ## Technologies used:
 * HTML
