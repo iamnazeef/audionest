@@ -30,7 +30,7 @@ git clone https://github.com/iamnazeef/AudioNest
 ![desktop_view](./screenshots/Desktop.png)
 
 ### Tablet view
-[!tablet_view](./screenshots/Tablet.png)
+![tablet_view](./screenshots/Tablet.png)
 
 ### Mobile view
-* [!mobile_1_view](./screenshots/Mobile - 1.png)
+* ![mobile_1_view](./screenshots/Mobile - 1.png)
