@@ -20,7 +20,7 @@ AudioNest is a web-based music streaming service. It is entirely developed with 
 ## How to run locally?
 ```
 //Clone the repo
-git clone https://github.com/iamnazeef/AudioNest
+git clone https://github.com/iamnazeef/AudioNest-Web-Player
 
 //Open index.html file on any web browser
 ```
