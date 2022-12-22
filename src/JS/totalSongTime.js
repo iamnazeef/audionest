@@ -18,4 +18,12 @@ const getSecondsForTotalTime = (duration) => {
   }
 };
 
-export { getMinutesForTotalTime, getSecondsForTotalTime };
+const getTime = (duration) => {
+  const minute = getMinutesForTotalTime(duration);
+  const seconds = getSecondsForTotalTime(duration);
+  return `${minute} : ${seconds}`;
+};
+
+// export { getMinutesForTotalTime, getSecondsForTotalTime };
+
+export { getTime };

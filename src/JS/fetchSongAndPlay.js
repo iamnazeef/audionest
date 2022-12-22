@@ -11,12 +11,9 @@ const desktopModeSongSkipBackward = document.getElementById(
 const title = document.getElementById("title");
 const playPause = document.getElementById("play-pause");
 const playPauseImg = document.getElementById("play-pause-img");
-import { findCategory } from "./songCategories.js";
-import {
-  getMinutesForTotalTime,
-  getSecondsForTotalTime,
-} from "./totalSongTime.js";
 
+import { findCategory } from "./songCategories.js";
+import { getTime } from "./totalSongTime.js";
 import { changeMusicProgress } from "./changeMusicProgress.js";
 
 const songInfo = {
@@ -26,12 +23,11 @@ const songInfo = {
   songArtist: "",
   songState: "../assets/pause.png",
   songBoolean: false,
-  songFav: false,
-  shuffle: false,
   currentProgressBar: "",
   totalTime: "",
   currentSongDuration: "",
   progressBar: "",
+  loadinfo: false,
 };
 
 const serverURL = {
@@ -47,7 +43,6 @@ const fetchSong = (songCategory, songId) => {
   fetch(`${serverURL.link}/${songCategory}/${songId}`)
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data);
       miniPlayerSongName.innerText = data.song_name;
       songInfo.songName = data.song_name;
       miniPlayerCoverArt.src = data.cover_art;
@@ -55,7 +50,7 @@ const fetchSong = (songCategory, songId) => {
       miniPlayerCoverArt.alt = data.song_name;
       const songArtist = data.artists.split(",");
       songInfo.songArtist = songArtist[0];
-      if (window.innerWidth >= 1000) {
+      if (window.innerWidth >= 750) {
         miniPlayerArtistName.innerText = songArtist[0];
       }
       audio.src = data.audio;
@@ -143,12 +138,11 @@ const loadInfo = () => {
 
   //Function to display / set total music time
   const setTotalTime = () => {
-    songInfo.totalTime.innerText = `${getMinutesForTotalTime(
-      audio.duration
-    )} : ${getSecondsForTotalTime(audio.duration)}`;
+    let time = getTime(audio.duration);
+    songInfo.totalTime.innerText = time;
   };
 
-  setTimeout(setTotalTime, 200);
+  setTimeout(setTotalTime, 100);
 
   //Event to change music progress
   if (songInfo.progressBar) {
