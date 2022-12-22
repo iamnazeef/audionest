@@ -24,3 +24,7 @@ git clone https://github.com/iamnazeef/AudioNest
 
 //Open index.html file on any web browser
 ```
+## Screenshots
+
+### Desktop view
+![desktop_view](./screenshots/Desktop.png)
