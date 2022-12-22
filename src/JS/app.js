@@ -15,15 +15,23 @@ const serverURL = {
 
 let id = "";
 let medias = "";
+
+//event listener to play song when clicked on coverart in the home page.
 const mediaQueries = () => {
-  medias = document.getElementsByClassName("media");
-  Array.from(medias).forEach((media) => {
-    media.addEventListener("click", (e) => {
-      id = e.target.id;
-      const category = e.target.dataset.category;
-      fetchSong(category, id);
+  try {
+    medias = document.getElementsByClassName("media");
+    Array.from(medias).forEach((media) => {
+      media.addEventListener("click", (e) => {
+        id = e.target.id;
+        const category = e.target.dataset.category;
+        if (id) {
+          fetchSong(category, id);
+        }
+      });
     });
-  });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 setTimeout(mediaQueries, 600);
@@ -89,7 +97,6 @@ const getSongs = async (category, HTML) => {
   }
 };
 
-//function to display songs on window load
 const loadSongs = () => {
   for (let j = 0; j < categories.length; j++) {
     getSongs(categories[j], html[j]);

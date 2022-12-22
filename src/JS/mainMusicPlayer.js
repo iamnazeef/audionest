@@ -16,7 +16,7 @@ const setBackBtn = () => {
 };
 
 const openMainMusicPlayer = () => {
-  if (window.innerWidth < 1000) {
+  if (window.innerWidth < 750) {
     mainMusicPlayer.classList.add("active");
     body.classList.add("active");
     setBackBtn();

@@ -80,11 +80,12 @@
   transition: all 0.3s linear;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 750px) {
   .mini-music-player {
     margin-bottom: 0;
     padding: 0;
     height: 6rem;
+    z-index: 40;
   }
 
   .music-menus {
@@ -122,5 +123,11 @@
   .desktop-media-control {
     display: block;
     cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .mini-music-player {
+    z-index: 20;
   }
 }
